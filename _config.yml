@@ -1,0 +1,15 @@
+title: Visanet Uruguay
+description: >
+  Sitio mantenido por Visanet Uruguay con información publica para desarrolladores e integradores.
+
+remote_theme: pmarsceill/just-the-docs
+search_enabled: true
+
+# Aux links for the upper right navigation
+aux_links:
+    "Visanet corporativo":
+      - "https://www.visanet.com.uy/"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
