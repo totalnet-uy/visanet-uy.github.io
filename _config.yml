@@ -5,6 +5,8 @@ description: >
 remote_theme: pmarsceill/just-the-docs
 search_enabled: true
 
+repository: visanet-uy/visanet-uy.github.io
+
 # Aux links for the upper right navigation
 aux_links:
     "Visanet corporativo":
