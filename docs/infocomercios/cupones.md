@@ -57,7 +57,7 @@ el resultado es:
   "expires_in" : 1200
 }
 ```
-Luego se puuede invocar la API por ejempo con [curl](https://curl.haxx.se/); en este caso invocando al [metodo count de la API de Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html)
+Luego se puede invocar la API por ejempo con [curl](https://curl.haxx.se/); en este caso invocando al [metodo count de la API de Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html)
 
 ```bash
 curl -H "Authorization: Bearer 077yAiBtUKlPUKsRwHA/Mg4lXcc3V4MsU/GvFkedoWe2Wy3MqQjA0M7WtJRQPQyWYgQ7lY1jeu7DefBBfNcf+n1KeecBWZAZRtYqCVZyK6//UcRUUSrQZynvflvZDeSkNt8=" https://acceso-api.vnet.uy/cupones\*/_count
