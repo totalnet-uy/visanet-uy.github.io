@@ -79,7 +79,7 @@ Visanet Uruguay implemento una API ([API LIF](https://api-lif.vnet.uy/Help) ) pa
 - Consulta de características de tarjeta (tipo, si se permiten cuotas, etc)
 - Calculo de devolución de Impuestos
 
-![flujo API LIF ](https://visanet-uy.github.io/images/API_LIF_flow.svg)
+![flujo API LIF ](/assets/img/API_LIF_flow.svg)
 
 ### Datos adicionales a la transacción
 Referencia: <http://apps.cybersource.com/library/documentation/dev_guides/CC_Svcs_SO_API/Credit_Cards_SO_API.pdf>
@@ -128,6 +128,3 @@ Importe Gravado: $ 1000 
 |MDD6|0123456789|
 |MDD7|ID|
 |MDD8|411111|
-
----
-actualizado: 30 Junio 2017

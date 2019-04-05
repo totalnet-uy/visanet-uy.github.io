@@ -53,6 +53,3 @@ Deberan ser enviados los siguientes recursos
   - Mascara del PAN (ej. 411111xxxxxx1234)
   - Cybersource ID
   - MDDs de la transacción
-
----
-actualizado: 6 Abril 2018

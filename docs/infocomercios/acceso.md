@@ -55,6 +55,3 @@ Los archivos se organizan en carpetas que tienen como nombre el número de comer
 Para que le sean otorgados permisos sobre los archivos, debe ponerse en contacto con [atcomercial@visanet.com.uy](mailto:atcomercial@visanet.com.uy) informando la dirección de correo electrónico que utilizó para registrase
 
 Luego de que se le otorgue permisos debe salir y volver a iniciar sesión en [acceso.vnet.uy](https://acceso.vnet.uy) para poder visualizar los archivos compartidos.
-
----
-actualizado: Diciembre 2018
