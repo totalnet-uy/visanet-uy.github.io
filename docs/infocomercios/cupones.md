@@ -20,7 +20,7 @@ El rol asignado en Elasticsearch tiene implementado [Document Level Security](ht
 
 ## Consola para desarrolladores
 
-Dentro de https://acceso.vnet.uy hay un link hacia un entorno [Kibana](https://www.elastic.co/es/products/kibana) que permite visualizar y hacer análisis con la información disponible.
+Dentro de [acceso.vnet.uy](https://acceso.vnet.uy) hay un link hacia un entorno [Kibana](https://www.elastic.co/es/products/kibana) que permite visualizar y hacer análisis con la información disponible.
 
 ![Link a kibana](/assets/img/acceso_link_cupones.png)
 
