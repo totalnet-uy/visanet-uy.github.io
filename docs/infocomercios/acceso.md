@@ -44,7 +44,9 @@ Para poder utilizar la API, es necesario crear una contraseña de aplicación en
 ## Registro / Autenticación
 Cada usuario que desee acceder a [acceso.vnet.uy](https://acceso.vnet.uy) puede optar entre:
 * Crear una cuenta en [acceso.vnet.uy](https://acceso.vnet.uy) utilizando cualquier dirección de correo electrónico.
+<img src="/assets/img/Fig1.png">
 * Utilizar una cuenta existente de Google o Microsoft.
+<img src="/assets/img/Fig2.png">
 
 Luego de esto el usuario podrá entrar a [acceso.vnet.uy](https://acceso.vnet.uy) pero **no tendrá acceso a ningún archivo**, hasta que Visanet le conceda permisos según corresponda.
 
@@ -55,3 +57,19 @@ Los archivos se organizan en carpetas que tienen como nombre el número de comer
 Para que le sean otorgados permisos sobre los archivos, debe ponerse en contacto con [atcomercial@visanet.com.uy](mailto:atcomercial@visanet.com.uy) informando la dirección de correo electrónico que utilizó para registrase
 
 Luego de que se le otorgue permisos debe salir y volver a iniciar sesión en [acceso.vnet.uy](https://acceso.vnet.uy) para poder visualizar los archivos compartidos.
+
+## Ejemplo Cyberduck
+A continuacion se muestra como generar la autenticacion y configuración para esta aplicación.
+
+* Iniciar sesión en [acceso.vnet.uy](https://acceso.vnet.uy), ir a la parte superior derecha del navegador donde está el usuarios e ir a Configuraciones.
+<img src="/assets/img/Fig3.png">
+* A la izquierda ir a Seguridad.
+<img src="/assets/img/Fig4.png">
+* Luego Crear una nueva contraseña de aplicación.
+<img src="/assets/img/Fig5.png">
+* Copiarse los textos USUARIO y CONTRASEÑA para utilizar en Cyberduck.
+<img src="/assets/img/Fig6.png">
+* Abrir la aplicación CYBERDUCK y crear una Nueva conexión completando los campos Servidor=acceso.vnet.uy, el Usuario, la Contraseña; en Mas Opciones completar el Path=remote.php/dav/file/USUARIO/ (sustituyendo la palabra USUARIO por su valor).
+<img src="/assets/img/Fig7.png">
+* Le damos Conectar y se veran las carpetas del comercio o los comercios asignados.
+<img src="/assets/img/Fig8.png">
