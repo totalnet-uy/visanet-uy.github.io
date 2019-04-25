@@ -39,7 +39,50 @@ En particular el contenido del array `saml_groups` indica a que comercios se tie
 ```
 
 ## API REST
-Para poder usar la API se debe [obtener una **API-KEY**](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html)
+Para poder usar la API se deben obtener credenciales; por el momento solo disponiblizamos la alternativa de obtener un Token que tiene la limitación de que el toquen tiene una validez de 20 minutos. En versiones futuras de Elasticsearch, cuando se puedan [otorgar permisos adecuados](https://github.com/elastic/elasticsearch/issues/40031) podremos habilitarle a _terceros_ la opción de _api_key_
+
+### Token
+
+[Ver documentación de **token**](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-get-token.html)
+
+Al ejecutar:
+```json
+POST _xpack/security/oauth2/token
+{
+  "grant_type" : "client_credentials"
+}
+```
+el resultado es:
+
+```json
+{
+  "access_token" : "077yAiBtUKlPUKsRwHA/Mg4lXcc3V4MsU/GvFkedoWe2Wy3MqQjA0M7WtJRQPQyWYgQ7lY1jeu7DefBBfNcf+n1KeecBWZAZRtYqCVZyK6//UcRUUSrQZynvflvZDeSkNt8=",
+  "type" : "Bearer",
+  "expires_in" : 1200
+}
+```
+Luego se puede invocar la API por ejempo con [curl](https://curl.haxx.se/); en este caso invocando al [metodo count de la API de Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-count.html)
+
+```bash
+curl -H "Authorization: Bearer 077yAiBtUKlPUKsRwHA/Mg4lXcc3V4MsU/GvFkedoWe2Wy3MqQjA0M7WtJRQPQyWYgQ7lY1jeu7DefBBfNcf+n1KeecBWZAZRtYqCVZyK6//UcRUUSrQZynvflvZDeSkNt8=" https://acceso-api.vnet.uy/cupones\*/_count
+```
+Con el siguiente resultado:
+
+```json
+{
+  "count":6427,
+  "_shards":{
+    "total":25,
+    "successful":25,
+    "skipped":0,
+    "failed":0
+  }
+}
+```
+
+### API KEY
+
+[Ver documentación de **API-KEY**](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html).
 
 Al ejecutar:
 ```json
