@@ -64,13 +64,18 @@ A continuacion se muestra como generar la autenticacion y configuración para es
 
 * Iniciar sesión en [acceso.vnet.uy](https://acceso.vnet.uy), ir a la parte superior derecha del navegador donde está el usuarios e ir a Configuraciones.
 ![Fig. 3](/assets/img/Fig3.png)
+
 * A la izquierda ir a Seguridad.
 ![Fig. 4](/assets/img/Fig4.png)
+
 * Luego Crear una nueva contraseña de aplicación.
 ![Fig. 5](/assets/img/Fig5.png)
+
 * Copiarse los textos USUARIO y CONTRASEÑA para utilizar en Cyberduck.
 ![Fig. 6](/assets/img/Fig6.png)
-* Abrir la aplicación CYBERDUCK y crear una Nueva conexión completando los campos Servidor=acceso.vnet.uy, el Usuario, la Contraseña; en Mas Opciones completar el Path=remote.php/dav/file/USUARIO/ (sustituyendo la palabra USUARIO por su valor).
+
+* Abrir la aplicación [cyberduck](https://cyberduck.io/webdav/) y crear una **Nueva Conexión** completando los campos `Servidor=acceso.vnet.uy`, el `Usuario`, la `Contraseña`; en **Mas Opciones** completar el `Path=remote.php/dav/file/USUARIO/` (sustituyendo la palabra USUARIO por su valor).
 ![Fig. 7](/assets/img/Fig7.png)
+
 * Le damos Conectar y se veran las carpetas del comercio o los comercios asignados.
 ![Fig. 8](/assets/img/Fig8.png)
