@@ -44,9 +44,10 @@ Para poder utilizar la API, es necesario crear una contraseña de aplicación en
 ## Registro / Autenticación
 Cada usuario que desee acceder a [acceso.vnet.uy](https://acceso.vnet.uy) puede optar entre:
 * Crear una cuenta en [acceso.vnet.uy](https://acceso.vnet.uy) utilizando cualquier dirección de correo electrónico.
-<img src="/assets/img/Fig1.png">
+![Fig. 1](/assets/img/Fig1.png)
+
 * Utilizar una cuenta existente de Google o Microsoft.
-<img src="/assets/img/Fig2.png">
+![Fig. 2](/assets/img/Fig2.png)
 
 Luego de esto el usuario podrá entrar a [acceso.vnet.uy](https://acceso.vnet.uy) pero **no tendrá acceso a ningún archivo**, hasta que Visanet le conceda permisos según corresponda.
 
@@ -62,14 +63,14 @@ Luego de que se le otorgue permisos debe salir y volver a iniciar sesión en [ac
 A continuacion se muestra como generar la autenticacion y configuración para esta aplicación.
 
 * Iniciar sesión en [acceso.vnet.uy](https://acceso.vnet.uy), ir a la parte superior derecha del navegador donde está el usuarios e ir a Configuraciones.
-<img src="/assets/img/Fig3.png">
+![Fig. 3](/assets/img/Fig3.png)
 * A la izquierda ir a Seguridad.
-<img src="/assets/img/Fig4.png">
+![Fig. 4](/assets/img/Fig4.png)
 * Luego Crear una nueva contraseña de aplicación.
-<img src="/assets/img/Fig5.png">
+![Fig. 5](/assets/img/Fig5.png)
 * Copiarse los textos USUARIO y CONTRASEÑA para utilizar en Cyberduck.
-<img src="/assets/img/Fig6.png">
+![Fig. 6](/assets/img/Fig6.png)
 * Abrir la aplicación CYBERDUCK y crear una Nueva conexión completando los campos Servidor=acceso.vnet.uy, el Usuario, la Contraseña; en Mas Opciones completar el Path=remote.php/dav/file/USUARIO/ (sustituyendo la palabra USUARIO por su valor).
-<img src="/assets/img/Fig7.png">
+![Fig. 7](/assets/img/Fig7.png)
 * Le damos Conectar y se veran las carpetas del comercio o los comercios asignados.
-<img src="/assets/img/Fig8.png">
+![Fig. 8](/assets/img/Fig8.png)
