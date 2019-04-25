@@ -55,27 +55,27 @@ Luego de esto el usuario podrá entrar a [acceso.vnet.uy](https://acceso.vnet.uy
 ## Permisos
 Los archivos se organizan en carpetas que tienen como nombre el número de comercio.
 
-Para que le sean otorgados permisos sobre los archivos, debe ponerse en contacto con [atcomercial@visanet.com.uy](mailto:atcomercial@visanet.com.uy) informando la dirección de correo electrónico que utilizó para registrase
+Para que le sean otorgados permisos sobre los archivos, debe ponerse en contacto con [atcomercial@visanet.com.uy](mailto:atcomercial@visanet.com.uy) informando la dirección de correo electrónico que utilizó para registrase.
 
 Luego de que se le otorgue permisos debe salir y volver a iniciar sesión en [acceso.vnet.uy](https://acceso.vnet.uy) para poder visualizar los archivos compartidos.
 
 ## Ejemplo Cyberduck
 A continuacion se muestra como generar la autenticacion y configuración para esta aplicación.
 
-* Iniciar sesión en [acceso.vnet.uy](https://acceso.vnet.uy), ir a la parte superior derecha del navegador donde está el usuarios e ir a Configuraciones.
+* Iniciar sesión en [acceso.vnet.uy](https://acceso.vnet.uy), ir a la parte superior derecha del navegador donde está el usuarios e ir a **Configuraciones**.
 ![Fig. 3](/assets/img/Fig3.png)
 
-* A la izquierda ir a Seguridad.
+* A la izquierda ir a **Seguridad**.
 ![Fig. 4](/assets/img/Fig4.png)
 
-* Luego Crear una nueva contraseña de aplicación.
+* Luego **Crear una nueva contraseña de aplicación**.
 ![Fig. 5](/assets/img/Fig5.png)
 
-* Copiarse los textos USUARIO y CONTRASEÑA para utilizar en Cyberduck.
+* Copiarse los campos `Usuario` y `Contraseña` para utilizar en Cyberduck.
 ![Fig. 6](/assets/img/Fig6.png)
 
-* Abrir la aplicación [cyberduck](https://cyberduck.io/webdav/) y crear una **Nueva Conexión** completando los campos `Servidor=acceso.vnet.uy`, el `Usuario`, la `Contraseña`; en **Mas Opciones** completar el `Path=remote.php/dav/file/USUARIO/` (sustituyendo la palabra USUARIO por su valor).
+* Abrir la aplicación [cyberduck](https://cyberduck.io/webdav/) y crear una **Nueva Conexión** completando los campos `Servidor=acceso.vnet.uy`, el `Usuario`, la `Contraseña`; en **Más opciones** completar el `Path=remote.php/dav/file/usuario/` (sustituyendo la palabra `usuario` por su valor).
 ![Fig. 7](/assets/img/Fig7.png)
 
-* Le damos Conectar y se veran las carpetas del comercio o los comercios asignados.
+* Le damos **Conectar** y se veran las carpetas del comercio o los comercios asignados.
 ![Fig. 8](/assets/img/Fig8.png)
