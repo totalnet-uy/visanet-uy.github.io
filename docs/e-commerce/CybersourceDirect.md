@@ -91,15 +91,33 @@ Formato del campo *issuer_additionalData*:
 |Posición|Largo|Descripción|
 |-|-|-|
 |1-2|2|Plan|
-|3|1|Meses Diferidos|
+|3|1|Meses diferidos|
 |4-5|2|Cantidad de cuotas|
 |6|1|Indicador envío de pista = 0|
-|7-15|9|Cédula de Identidad, padding 0 a la izquierda|
-|16|1|INDI = Indicador de Devolución de Impuestos<br>0 - No aplica devolución<br>1 - Ley 17.934 (Restaurantes)<br>6 - Ley 19.210 (Inclusión Financiera)|
+|7-15|9|Cédula de identidad, padding 0 a la izquierda|
+|16|1|INDI = Indicador de devolución de impuestos<br>0 - No aplica devolución<br>1 - Ley 17.934 (Restaurantes)<br>6 - Ley 19.210 (Inclusión Financiera)|
 |17-28|12|Importe devolución de IVA (10 enteros 2 decimales)|
 |29-35|7|Número de factura (7 dígitos)|
+|36-37|2|Serie comprobante (alfanumérico)|
+|38-49|12|Importe total facturado (10 enteros 2 decimales)|
+|50-61|12|Importe gravado (10 enteros 2 decimales)|
+|62-73|12|Importe transacción (10 enteros 2 decimales)|
+|74-80|7|Importe propina (5 enteros 2 decimales)|
+|81-84|4|Porcentaje beneficio (2 enteros 2 decimales)|
+|85-86|2|Id integrador (alfanumérico)|
+|87|1|Quién retiene beneficio leyes ( "V" = Visanet, "C" = Comercio )|
+|88-89|2|Tipo doc origen (“01”= C.I.  “02”=RUT)|
+|90-101|12|Número documento origen (alfanumérico)|
+|102-126|25|Nro de pedido (alfanumérico)|
+|127-138|12|Código promoción  (alfanumérico)|
 
-**NOTA:** Para tarjetas de débito las posiciónes del 1-6 tienen el valor fijo "003000"
+
+**NOTAS:** Para tarjetas de débito las posiciónes del 1-6 tienen el valor fijo "003000"     
+Los campos resaltados en negrita solo aplican a la figura de Payment Facilitators.    
+Quién retiene beneficio leyes - Para las pasarelas es "V" y para los Payment Facilitators es "C".         
+Id integrador - Identificador de integrador asignado por Visanet a la pasarela.
+Código de promocion - Código informado por Visanet.
+
 
 A su vez, **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData **MDD*
 
