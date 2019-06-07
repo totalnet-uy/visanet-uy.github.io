@@ -114,17 +114,17 @@ Formato del campo *issuer_additionalData*:
 
 **NOTAS:**   
 
+Porcentaje de beneficio: Valor que se extrae de Api Lif.
+Id integrador: Identificador de integrador asignado por Visanet a la pasarela.  
+
 Los campos marcados con * solo aplican a la figura de Payment Facilitators.   
 Quién retiene beneficio leyes:
 - "V" para las pasarelas  
 - "C" para los Payment Facilitators
 
-Id integrador: Identificador de integrador asignado por Visanet a la pasarela.  
 Código de promoción: Código informado por Visanet.  
-Porcentaje de beneficio: Valor que se extrae de Api Lif
 
-
-A su vez, **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData **MDD*
+A su vez **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData **MDD*
 
 |MDD|Presencia|Descripción|
 |-|-|-|
