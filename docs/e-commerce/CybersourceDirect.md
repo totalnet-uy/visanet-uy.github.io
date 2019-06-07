@@ -77,7 +77,7 @@ En casos en que la solicitud de autorización fuera denegada hay comercios/integ
 Visanet Uruguay implemento una API ([API LIF](https://api-lif.vnet.uy/Help) ) para ser consumida por el comercio/integrador cuando corresponda con los siguientes servicios:
 
 - Consulta de características de tarjeta (tipo, si se permiten cuotas, etc)
-- Calculo de devolución de Impuestos
+- Cálculo de devolución de Impuestos
 
 ![flujo API LIF ](/assets/img/API_LIF_flow.svg)
 
@@ -89,7 +89,7 @@ La información local ya sea de cuotas o de devolución de impuestos se envía e
 Formato del campo *issuer_additionalData*:
 
 |Posición|Largo|Descripción|
-|-|-|-|
+|----------|:-------------:|:------|
 |1-2|2|Plan|
 |3|1|Meses diferidos|
 |4-5|2|Cantidad de cuotas|
@@ -105,41 +105,43 @@ Formato del campo *issuer_additionalData*:
 |74-80|7|Importe propina (5 enteros 2 decimales)|
 |81-84|4|Porcentaje beneficio (2 enteros 2 decimales)|
 |85-86|2|Id integrador (alfanumérico)|
-||||
+  ||||
 |87|1|* Quién retiene beneficio leyes ( "V" = Visanet, "C" = Comercio )|
-|88-89|2|* Tipo doc origen (“01”= C.I.  “02”=RUT)|
+|88-89|2|* Tipo documento origen (“01”= C.I.  “02”=RUT)|
 |90-101|12|* Número documento origen (alfanumérico)|
 |102-126|25|* Número de pedido (alfanumérico)|
 |127-138|12|* Código promoción  (alfanumérico)|
 
-
 **NOTAS:**   
 
-Los campos marcados con * solo aplican a la figura de Payment Facilitators.    
-      Quién retiene beneficio leyes - Para las pasarelas es "V" y para los Payment Facilitators es "C".         
-      Id integrador - Identificador de integrador asignado por Visanet a la pasarela.
-      Código de promocion - Código informado por Visanet.
+Los campos marcados con * solo aplican a la figura de Payment Facilitators.   
+Quién retiene beneficio leyes:
+- "V" para las pasarelas  
+- "C" para los Payment Facilitators
 
+Id integrador: Identificador de integrador asignado por Visanet a la pasarela.  
+Código de promoción: Código informado por Visanet.  
+Porcentaje de beneficio: Este valor se extrae de Api Lif
 
 
 A su vez, **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData **MDD*
 
 |MDD|Presencia|Descripción|
 |-|-|-|
-|MDD1|Opcional|Identificador de Vendedor|
-|MDD2|Opcional|Tipo de identificación:<br>"01"= C.I.<br>"02"=RUT|
-|MDD3|Mandatorio|Monto Total(10 enteros 2 decimales)|
-|MDD4|Mandatorio|Monto Gravado(10 enteros 2 decimales)|
+|MDD1|Opcional|Identificador de vendedor|
+|MDD2|Opcional|Tipo documento origen:<br>"01"= C.I.<br>"02"=RUT|
+|MDD3|Mandatorio|Monto total(10 enteros 2 decimales)|
+|MDD4|Mandatorio|Monto gravado(10 enteros 2 decimales)|
 |MDD5|Mandatorio|texto enviado en *issuer_additionalData*|
 |MDD6|Mandatorio|Número de factura completo|
 |MDD7|Mandatorio|Identificador de comercio/integrador<br>segun informado por Visanet|
 |MDD8|Mandatorio|BIN|
-|MDD9|Opcional|Codigo de Promoción<br>segun informado por Visanet|
+|MDD9|Opcional|Código de promoción<br>según informado por Visanet|
 
 #### Ejemplo
-Para una transacción realizada con tarjeta de Débito que aplique ley 19.210
+Para una transacción realizada con tarjeta de débito que aplique ley 19.210
 Importe total: $ 1220
-Importe Gravado: $ 1000 
+Importe gravado: $ 1000 
 
 |MDD|Valor|
 |-|-|
