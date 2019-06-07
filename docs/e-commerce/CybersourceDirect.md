@@ -114,7 +114,7 @@ Formato del campo *issuer_additionalData*:
 
 **NOTAS:**   
 
-Porcentaje de beneficio: Valor que se extrae de Api Lif.
+Porcentaje de beneficio: Valor que se extrae de Api Lif.  
 Id integrador: Identificador de integrador asignado por Visanet a la pasarela.  
 
 Los campos marcados con * solo aplican a la figura de Payment Facilitators.   
