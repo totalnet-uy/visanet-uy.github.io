@@ -105,18 +105,21 @@ Formato del campo *issuer_additionalData*:
 |74-80|7|Importe propina (5 enteros 2 decimales)|
 |81-84|4|Porcentaje beneficio (2 enteros 2 decimales)|
 |85-86|2|Id integrador (alfanumérico)|
-|87|1|Quién retiene beneficio leyes ( "V" = Visanet, "C" = Comercio )|
-|88-89|2|Tipo doc origen (“01”= C.I.  “02”=RUT)|
-|90-101|12|Número documento origen (alfanumérico)|
-|102-126|25|Nro de pedido (alfanumérico)|
-|127-138|12|Código promoción  (alfanumérico)|
+||||
+|87|1|* Quién retiene beneficio leyes ( "V" = Visanet, "C" = Comercio )|
+|88-89|2|* Tipo doc origen (“01”= C.I.  “02”=RUT)|
+|90-101|12|* Número documento origen (alfanumérico)|
+|102-126|25|* Número de pedido (alfanumérico)|
+|127-138|12|* Código promoción  (alfanumérico)|
 
 
-**NOTAS:** Para tarjetas de débito las posiciónes del 1-6 tienen el valor fijo "003000"     
-Los campos resaltados en negrita solo aplican a la figura de Payment Facilitators.    
-Quién retiene beneficio leyes - Para las pasarelas es "V" y para los Payment Facilitators es "C".         
-Id integrador - Identificador de integrador asignado por Visanet a la pasarela.
-Código de promocion - Código informado por Visanet.
+**NOTAS:**   
+
+Los campos marcados con * solo aplican a la figura de Payment Facilitators.    
+      Quién retiene beneficio leyes - Para las pasarelas es "V" y para los Payment Facilitators es "C".         
+      Id integrador - Identificador de integrador asignado por Visanet a la pasarela.
+      Código de promocion - Código informado por Visanet.
+
 
 
 A su vez, **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData **MDD*
@@ -142,7 +145,7 @@ Importe Gravado: $ 1000 
 |-|-|
 |MDD3|000000122000|
 |MDD4|000000100000|
-|MDD5|003000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60000000040001234567|
+|MDD5|000010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60000000040001234567A10000001220000000001000000000001220000000000040001|
 |MDD6|0123456789|
-|MDD7|ID|
+|MDD7|01|
 |MDD8|411111|
