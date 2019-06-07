@@ -39,7 +39,7 @@ En esta nueva modalidad para comercio electrónico Visanet Uruguay está aplican
 
 ## Productos de Cybersource considerados
 ### Decision Manager
-Cybersource dispone del modulo [Decision Manager](https://www.cybersource.com/products/fraud_management/decision_manager/) para administrar en su conjunto, el riesgo involucrado en las transacciones realizadas en ambiente electrónico y que pasan por su radar. Este módulo constituye un potente motor antifraude, que maneja cientos de variables en tiempo real, no sólo sobre el comportamiento histórico de la tarjeta que está realizando la transacción sino sobre el dispositivo (laptop, pc, Smartphone) desde el cual se está realizando la misma, lo que se conoce como “Device Fingerprint”.
+Cybersource dispone del módulo [Decision Manager](https://www.cybersource.com/products/fraud_management/decision_manager/) para administrar en su conjunto, el riesgo involucrado en las transacciones realizadas en ambiente electrónico y que pasan por su radar. Este módulo constituye un potente motor antifraude que maneja cientos de variables en tiempo real, no sólo sobre el comportamiento histórico de la tarjeta que está realizando la transacción, sino sobre el dispositivo (laptop, pc, smartphone) desde el cual se está realizando la misma, lo que se conoce como “Device Fingerprint”.
 
 Asimismo, se pueden aplicar diversas reglas de negocio para cada caso en particular y así construir modelos de prevención de fraude que apliquen a rubros o comercios particulares.
 
@@ -84,7 +84,7 @@ Visanet Uruguay implemento una API ([API LIF](https://api-lif.vnet.uy/Help) ) pa
 ### Datos adicionales a la transacción
 Referencia: <http://apps.cybersource.com/library/documentation/dev_guides/CC_Svcs_SO_API/Credit_Cards_SO_API.pdf>
 
-La información local ya sea de cuotas o de devolución de impuestos se envía en la transacción mediante el campo *issuer_additionalData*. La responsabilidad de informar aplicación de Devolución de Impuestos es del comercio/integrador considerando la normativa vigente; las condiciones a aplicar dependen del comercio, comprador, monto de la operacion, tipo de tarjeta (crédito, débito, prepago), etc.
+La información local ya sea de cuotas o de devolución de impuestos se envía en la transacción mediante el campo *issuer_additionalData*. La responsabilidad de informar aplicación de Devolución de Impuestos es del comercio/integrador considerando la normativa vigente; las condiciones a aplicar dependen del comercio, comprador, monto de la operación, tipo de tarjeta (crédito, débito, prepago), etc.
 
 Formato del campo *issuer_additionalData*:
 
@@ -121,7 +121,7 @@ Quién retiene beneficio leyes:
 
 Id integrador: Identificador de integrador asignado por Visanet a la pasarela.  
 Código de promoción: Código informado por Visanet.  
-Porcentaje de beneficio: Este valor se extrae de Api Lif
+Porcentaje de beneficio: Valor que se extrae de Api Lif
 
 
 A su vez, **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData **MDD*
