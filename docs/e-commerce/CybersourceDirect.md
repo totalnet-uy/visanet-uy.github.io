@@ -39,7 +39,7 @@ En esta nueva modalidad para comercio electrónico Visanet Uruguay está aplican
 
 ## Productos de Cybersource considerados
 ### Decision Manager
-Cybersource dispone del modulo [Decision Manager](https://www.cybersource.com/products/fraud_management/decision_manager/) para administrar en su conjunto, el riesgo involucrado en las transacciones realizadas en ambiente electrónico y que pasan por su radar. Este módulo constituye un potente motor antifraude, que maneja cientos de variables en tiempo real, no sólo sobre el comportamiento histórico de la tarjeta que está realizando la transacción sino sobre el dispositivo (laptop, pc, Smartphone) desde el cual se está realizando la misma, lo que se conoce como “Device Fingerprint”.
+Cybersource dispone del módulo [Decision Manager](https://www.cybersource.com/products/fraud_management/decision_manager/) para administrar en su conjunto, el riesgo involucrado en las transacciones realizadas en ambiente electrónico y que pasan por su radar. Este módulo constituye un potente motor antifraude que maneja cientos de variables en tiempo real, no sólo sobre el comportamiento histórico de la tarjeta que está realizando la transacción, sino sobre el dispositivo (laptop, pc, smartphone) desde el cual se está realizando la misma, lo que se conoce como “Device Fingerprint”.
 
 Asimismo, se pueden aplicar diversas reglas de negocio para cada caso en particular y así construir modelos de prevención de fraude que apliquen a rubros o comercios particulares.
 
@@ -77,54 +77,77 @@ En casos en que la solicitud de autorización fuera denegada hay comercios/integ
 Visanet Uruguay implemento una API ([API LIF](https://api-lif.vnet.uy/Help) ) para ser consumida por el comercio/integrador cuando corresponda con los siguientes servicios:
 
 - Consulta de características de tarjeta (tipo, si se permiten cuotas, etc)
-- Calculo de devolución de Impuestos
+- Cálculo de devolución de Impuestos
 
 ![flujo API LIF ](/assets/img/API_LIF_flow.svg)
 
 ### Datos adicionales a la transacción
 Referencia: <http://apps.cybersource.com/library/documentation/dev_guides/CC_Svcs_SO_API/Credit_Cards_SO_API.pdf>
 
-La información local ya sea de cuotas o de devolución de impuestos se envía en la transacción mediante el campo *issuer_additionalData*. La responsabilidad de informar aplicación de Devolución de Impuestos es del comercio/integrador considerando la normativa vigente; las condiciones a aplicar dependen del comercio, comprador, monto de la operacion, tipo de tarjeta (crédito, débito, prepago), etc.
+La información local ya sea de cuotas o de devolución de impuestos se envía en la transacción mediante el campo *issuer_additionalData*. La responsabilidad de informar aplicación de Devolución de Impuestos es del comercio/integrador considerando la normativa vigente; las condiciones a aplicar dependen del comercio, comprador, monto de la operación, tipo de tarjeta (crédito, débito, prepago), etc.
 
 Formato del campo *issuer_additionalData*:
 
 |Posición|Largo|Descripción|
-|-|-|-|
+|----------|:-------------:|:------|
 |1-2|2|Plan|
-|3|1|Meses Diferidos|
+|3|1|Meses diferidos|
 |4-5|2|Cantidad de cuotas|
 |6|1|Indicador envío de pista = 0|
-|7-15|9|Cédula de Identidad, padding 0 a la izquierda|
-|16|1|INDI = Indicador de Devolución de Impuestos<br>0 - No aplica devolución<br>1 - Ley 17.934 (Restaurantes)<br>6 - Ley 19.210 (Inclusión Financiera)|
+|7-15|9|Cédula de identidad, padding 0 a la izquierda|
+|16|1|INDI = Indicador de devolución de impuestos<br>0 - No aplica devolución<br>1 - Ley 17.934 (Restaurantes)<br>6 - Ley 19.210 (Inclusión Financiera)|
 |17-28|12|Importe devolución de IVA (10 enteros 2 decimales)|
 |29-35|7|Número de factura (7 dígitos)|
+|36-37|2|Serie comprobante (alfanumérico)|
+|38-49|12|Importe total facturado (10 enteros 2 decimales)|
+|50-61|12|Importe gravado (10 enteros 2 decimales)|
+|62-73|12|Importe transacción (10 enteros 2 decimales)|
+|74-80|7|Importe propina (5 enteros 2 decimales)|
+|81-84|4|Porcentaje beneficio (2 enteros 2 decimales)|
+|85-86|2|Id integrador (alfanumérico)|
+  ||||
+|87|1|* Quién retiene beneficio leyes ( "V" = Visanet, "C" = Comercio )|
+|88-89|2|* Tipo documento origen (“01”= C.I.  “02”=RUT)|
+|90-101|12|* Número documento origen (alfanumérico)|
+|102-126|25|* Número de pedido (alfanumérico)|
+|127-138|12|* Código promoción  (alfanumérico)|
 
-**NOTA:** Para tarjetas de débito las posiciónes del 1-6 tienen el valor fijo "003000"
+**NOTAS:**   
 
-A su vez, **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData **MDD*
+Porcentaje de beneficio: Valor que se extrae de Api Lif.  
+Id integrador: Identificador de integrador asignado por Visanet a la pasarela.  
+
+Los campos marcados con * solo aplican a la figura de Payment Facilitators.   
+Quién retiene beneficio leyes:
+- "V" para las pasarelas  
+- "C" para los Payment Facilitators
+
+Código de promoción: Código informado por Visanet.  
+
+A su vez **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData **MDD*
 
 |MDD|Presencia|Descripción|
 |-|-|-|
-|MDD1|Opcional|Identificador de Vendedor|
-|MDD2|Opcional|Tipo de identificación:<br>"01"= C.I.<br>"02"=RUT|
-|MDD3|Mandatorio|Monto Total(10 enteros 2 decimales)|
-|MDD4|Mandatorio|Monto Gravado(10 enteros 2 decimales)|
+|MDD1|Opcional|Identificador de vendedor|
+|MDD2|Opcional|Tipo documento origen:<br>"01"= C.I.<br>"02"=RUT|
+|MDD3|Mandatorio|Monto total(10 enteros 2 decimales)|
+|MDD4|Mandatorio|Monto gravado(10 enteros 2 decimales)|
 |MDD5|Mandatorio|texto enviado en *issuer_additionalData*|
 |MDD6|Mandatorio|Número de factura completo|
 |MDD7|Mandatorio|Identificador de comercio/integrador<br>segun informado por Visanet|
 |MDD8|Mandatorio|BIN|
-|MDD9|Opcional|Codigo de Promoción<br>segun informado por Visanet|
+|MDD9|Opcional|Código de promoción<br>según informado por Visanet|
 
 #### Ejemplo
-Para una transacción realizada con tarjeta de Débito que aplique ley 19.210
+Para una transacción realizada con tarjeta de débito que aplique ley 19.210
 Importe total: $ 1220
-Importe Gravado: $ 1000 
+Importe gravado: $ 1000 
 
 |MDD|Valor|
 |-|-|
 |MDD3|000000122000|
 |MDD4|000000100000|
-|MDD5|003000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60000000040001234567|
+|MDD5|000010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60000000040001234567A10000001220000000001000000000001220000000000040001|
 |MDD6|0123456789|
-|MDD7|ID|
+|MDD7|01|
 |MDD8|411111|
