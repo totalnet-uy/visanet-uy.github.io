@@ -49,6 +49,8 @@ Para poder usar la API desde un sistema externo se debe solicitar una `api_key` 
 }
 ```
 
+> Nota: la `api_key` sería valida únicamente para los comercios a los que ya tiene permiso, si se agregan/quitan comercios es necesario generar otra clave.
+
 De [acuerdo a la documentación](https://www.elastic.co/guide/en/elasticsearch/reference/current/security-api-create-api-key.html) el valor de `api_key` retornado puede usarse luego enviando un _request_ con un _Authorization header_ con un valor que tiene el prefijo `ApiKey` seguido de `credentials`, donde `credentials` es la codificación base64 de `id` y `api_key` unidas por dos puntos (`:`).
 
 ```bash
