@@ -168,7 +168,9 @@ Importe transacción: $ 122
 Importe gravado: $ 100  
 Importe propina: $ 10
 
-000010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60000000002001234567A10000000122000000000100000000000132000001000020001V
+|MDD|Valor|
+|-|-|
+|MDD5|000010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60000000002001234567A10000000122000000000100000000000132000001000020001V|
 
 #### Ejemplo para figura de Payment Facilitators
 
