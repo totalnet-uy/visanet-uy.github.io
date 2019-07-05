@@ -88,46 +88,48 @@ La información local ya sea de cuotas o de devolución de impuestos se envía e
 
 Formato del campo *issuer_additionalData*:
 
-|Posición|Largo|Descripción|
-|----------|:-------------:|:------|
-|1-2|2|Plan|
-|3|1|Meses diferidos|
-|4-5|2|Cantidad de cuotas|
-|6|1|Indicador envío de pista = 0|
-|7-15|9|Cédula de identidad, padding 0 a la izquierda|
-|16|1|INDI = Indicador de devolución de impuestos<br>0 - No aplica devolución<br>1 - Ley 17.934 (Restaurantes)<br>6 - Ley 19.210 (Inclusión Financiera)|
-|17-28|12|Importe devolución de IVA (10 enteros 2 decimales)|
-|29-35|7|Número de factura (7 dígitos)|
-|36-37|2|Serie comprobante (alfanumérico)|
-|38-49|12|Importe total facturado (10 enteros 2 decimales)|
-|50-61|12|Importe gravado (10 enteros 2 decimales)|
-|62-73|12|Importe transacción (10 enteros 2 decimales)|
-|74-80|7|Importe propina (5 enteros 2 decimales)|
-|81-84|4|Porcentaje beneficio (2 enteros 2 decimales)|
-|85-86|2|Id integrador (alfanumérico)|
-|87|1| Quién retiene beneficio leyes ( "V" = Visanet, "C" = Comercio )|
+|Posición|Largo|Descripción|Presencia|
+|----------|:-------------:|:------:|:------|
+|1-2|2|Plan|Mandatorio|
+|3|1|Meses diferidos|Mandatorio|
+|4-5|2|Cantidad de cuotas|Mandatorio|
+|6|1|Indicador envío de pista = 0|Mandatorio|
+|7-15|9|Cédula de identidad, padding 0 a la izquierda|Opcional|
+|16|1|INDI = Indicador de devolución de impuestos<br>0 - No aplica devolución<br>1 - Ley 17.934 (Restaurantes)<br>6 - Ley 19.210 (Inclusión Financiera)|Mandatorio|
+|17-28|12|Importe devolución de IVA (10 enteros 2 decimales)|Mandatorio|
+|29-35|7|Número de factura (7 dígitos)|Mandatorio|
+|36-37|2|Serie comprobante (alfanumérico)|Opcional|
+|38-49|12|Importe total facturado (10 enteros 2 decimales)|Mandatorio|
+|50-61|12|Importe gravado (10 enteros 2 decimales)|Mandatorio|
+|62-73|12|Importe transacción (10 enteros 2 decimales)|Mandatorio|
+|74-80|7|Importe propina (5 enteros 2 decimales)|Mandatorio|
+|81-84|4|Porcentaje beneficio (2 enteros 2 decimales)|Mandatorio|
+|85-86|2|Id integrador (alfanumérico)|Mandatorio|
+|87|1| Quién retiene beneficio leyes ( "V" = Visanet, "C" = Comercio )|Mandatorio|
 ||||
-|88-89|2|* Tipo documento origen (“01”= C.I.  “02”=RUT)|
-|90-101|12|* Número documento comercio origen (alfanumérico)|
-|102-126|25|** Número de pedido/orden (alfanumérico)|
-|127-138|12|* Código promoción  (alfanumérico)|
+|88-89|2|* Tipo documento origen (“01”= C.I.  “02”=RUT)|Mandatorio PF|
+|90-101|12|* Número documento comercio origen (alfanumérico)|Mandatorio PF|
+|102-126|25|** Número de pedido/orden (alfanumérico)|Opcional|
+|127-138|12|* Código promoción  (alfanumérico)|Opcional PF|
 
 **NOTAS:**   
 
-Los campos cédula de identidad y serie comprobante son opcionales. Los demás son mandatorios (hasta el campo 87 inclusive)  
-Porcentaje de beneficio: Valor que se extrae de Api Lif.  
-Id integrador: Identificador de integrador asignado por Visanet a la pasarela.  
-Quién retiene beneficio leyes:
-- "V" para las pasarelas  
-- "C" para los Payment Facilitators
+Los campos cédula de identidad y serie comprobante son opcionales.
+Los otros campos son mandatorios (hasta el campo 87 inclusive).  
+ - Porcentaje de beneficio: Valor que se extrae de Api Lif.  
+ - Id integrador: Identificador de integrador asignado por Visanet a la pasarela.     
+ - Quién retiene beneficio leyes:
+    - "V" para las pasarelas  
+    - "C" para los Payment Facilitators
 
-Los campos marcados con * solo aplican a la figura de Payment Facilitators y son opcionales.
+Los campos marcados con * solo aplican a la figura de Payment Facilitators y son mandatorios.
 
-** Número pedido/orden: Número que identifica el pedido/orden para el comercio. Este campo es opcional y aplica también para la figura de pasarelas.  
-Código de promoción: Código informado por Visanet.  
+- ** Número pedido/orden: Número que identifica el pedido/orden para el comercio. Este campo es opcional y aplica también para la figura de pasarelas.  
+- Código de promoción: Código informado por Visanet. Este campo también es opcional  
 
 
-A su vez **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData **MDD*
+A su vez **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData (MDD)
+
 
 |MDD|Presencia|Descripción|
 |-|-|-|
