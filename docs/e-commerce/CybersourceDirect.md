@@ -144,7 +144,8 @@ A su vez **se debe enviar** junto a cada transacción como mínimo la siguiente 
 |MDD9|Opcional|Código de promoción<br>según informado por Visanet|
 
 
-#### Ejemplo para figura de pasarelas ###
+#### Ejemplo para figura de pasarelas
+
 Para una transacción realizada con tarjeta de débito que aplique ley 19.210  
 
 Importe total: $ 1220  
@@ -160,8 +161,7 @@ Importe gravado: $ 1000   
 |MDD7|01|
 |MDD8|411111|
 
-
-#### Ejemplo MDD5 para una transacción que incluye propina en la que aplica ley 19.210 con 2 puntos de devolución de iva ###
+#### Ejemplo MDD5 para una transacción que incluye propina en la que aplica ley 19.210 con 2 puntos de devolución de iva ###    
 
 Importe total: $ 132  
 Importe transacción: $ 122  
