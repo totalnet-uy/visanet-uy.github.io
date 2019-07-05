@@ -88,43 +88,48 @@ La información local ya sea de cuotas o de devolución de impuestos se envía e
 
 Formato del campo *issuer_additionalData*:
 
-|Posición|Largo|Descripción|
-|----------|:-------------:|:------|
-|1-2|2|Plan|
-|3|1|Meses diferidos|
-|4-5|2|Cantidad de cuotas|
-|6|1|Indicador envío de pista = 0|
-|7-15|9|Cédula de identidad, padding 0 a la izquierda|
-|16|1|INDI = Indicador de devolución de impuestos<br>0 - No aplica devolución<br>1 - Ley 17.934 (Restaurantes)<br>6 - Ley 19.210 (Inclusión Financiera)|
-|17-28|12|Importe devolución de IVA (10 enteros 2 decimales)|
-|29-35|7|Número de factura (7 dígitos)|
-|36-37|2|Serie comprobante (alfanumérico)|
-|38-49|12|Importe total facturado (10 enteros 2 decimales)|
-|50-61|12|Importe gravado (10 enteros 2 decimales)|
-|62-73|12|Importe transacción (10 enteros 2 decimales)|
-|74-80|7|Importe propina (5 enteros 2 decimales)|
-|81-84|4|Porcentaje beneficio (2 enteros 2 decimales)|
-|85-86|2|Id integrador (alfanumérico)|
-  ||||
-|87|1|* Quién retiene beneficio leyes ( "V" = Visanet, "C" = Comercio )|
-|88-89|2|* Tipo documento origen (“01”= C.I.  “02”=RUT)|
-|90-101|12|* Número documento origen (alfanumérico)|
-|102-126|25|* Número de pedido (alfanumérico)|
-|127-138|12|* Código promoción  (alfanumérico)|
+|Posición|Largo|Descripción|Presencia|
+|----------|:-------------:|:------:|:------|
+|1-2|2|Plan|Mandatorio|
+|3|1|Meses diferidos|Mandatorio|
+|4-5|2|Cantidad de cuotas|Mandatorio|
+|6|1|Indicador envío de pista = 0|Mandatorio|
+|7-15|9|Cédula de identidad, padding 0 a la izquierda|Opcional|
+|16|1|INDI = Indicador de devolución de impuestos<br>0 - No aplica devolución<br>1 - Ley 17.934 (Restaurantes)<br>6 - Ley 19.210 (Inclusión Financiera)|Mandatorio|
+|17-28|12|Importe devolución de IVA (10 enteros 2 decimales)|Mandatorio|
+|29-35|7|Número de factura (7 dígitos)|Mandatorio|
+|36-37|2|Serie comprobante (alfanumérico)|Opcional|
+|38-49|12|Importe total facturado (10 enteros 2 decimales)|Mandatorio|
+|50-61|12|Importe gravado (10 enteros 2 decimales)|Mandatorio|
+|62-73|12|Importe transacción (10 enteros 2 decimales)|Mandatorio|
+|74-80|7|Importe propina (5 enteros 2 decimales)|Mandatorio|
+|81-84|4|Porcentaje beneficio (2 enteros 2 decimales)|Mandatorio|
+|85-86|2|Id integrador (alfanumérico)|Mandatorio|
+|87|1| Quién retiene beneficio leyes ( "V" = Visanet, "C" = Comercio )|Mandatorio|
+||||
+|88-89|2|* Tipo documento origen (“01”= C.I.  “02”=RUT)|Mandatorio PF|
+|90-101|12|* Número documento comercio origen (alfanumérico)|Mandatorio PF|
+|102-126|25|** Número de pedido/orden (alfanumérico)|Opcional|
+|127-138|12|* Código promoción  (alfanumérico)|Opcional PF|
 
 **NOTAS:**   
 
-Porcentaje de beneficio: Valor que se extrae de Api Lif.  
-Id integrador: Identificador de integrador asignado por Visanet a la pasarela.  
+Los campos cédula de identidad y serie comprobante son opcionales.
+Los otros campos son mandatorios (hasta el campo 87 inclusive).  
+ - Porcentaje de beneficio: Valor que se extrae de Api Lif.  
+ - Id integrador: Identificador de integrador asignado por Visanet a la pasarela.     
+ - Quién retiene beneficio leyes:
+    - "V" para las pasarelas  
+    - "C" para los Payment Facilitators
 
-Los campos marcados con * solo aplican a la figura de Payment Facilitators.   
-Quién retiene beneficio leyes:
-- "V" para las pasarelas  
-- "C" para los Payment Facilitators
+Los campos marcados con * solo aplican a la figura de Payment Facilitators y son mandatorios.
 
-Código de promoción: Código informado por Visanet.  
+- ** Número pedido/orden: Número que identifica el pedido/orden para el comercio. Este campo es opcional y aplica también para la figura de pasarelas.  
+- Código de promoción: Código informado por Visanet. Este campo también es opcional  
 
-A su vez **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData **MDD*
+
+A su vez **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData (MDD)
+
 
 |MDD|Presencia|Descripción|
 |-|-|-|
@@ -132,22 +137,61 @@ A su vez **se debe enviar** junto a cada transacción como mínimo la siguiente 
 |MDD2|Opcional|Tipo documento origen:<br>"01"= C.I.<br>"02"=RUT|
 |MDD3|Mandatorio|Monto total(10 enteros 2 decimales)|
 |MDD4|Mandatorio|Monto gravado(10 enteros 2 decimales)|
-|MDD5|Mandatorio|texto enviado en *issuer_additionalData*|
+|MDD5|Mandatorio|texto enviado en *issuer_additionalData* hasta el campo 87 inclusive|
 |MDD6|Mandatorio|Número de factura completo|
 |MDD7|Mandatorio|Identificador de comercio/integrador<br>segun informado por Visanet|
 |MDD8|Mandatorio|BIN|
 |MDD9|Opcional|Código de promoción<br>según informado por Visanet|
 
-#### Ejemplo
-Para una transacción realizada con tarjeta de débito que aplique ley 19.210
-Importe total: $ 1220
-Importe gravado: $ 1000 
+
+#### Ejemplo para figura de pasarelas
+
+Para una transacción realizada con tarjeta de débito que aplique ley 19.210  
+
+Importe total: $ 1220  
+Importe transacción: $ 1220  
+Importe gravado: $ 1000   
 
 |MDD|Valor|
 |-|-|
 |MDD3|000000122000|
 |MDD4|000000100000|
-|MDD5|000010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60000000040001234567A10000001220000000001000000000001220000000000040001|
+|MDD5|000010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60000000040001234567A10000001220000000001000000000001220000000000040001V|
+|MDD6|0123456789|
+|MDD7|01|
+|MDD8|411111|
+
+#### Ejemplo MDD5 para una transacción que incluye propina en la que aplica ley 19.210 con 2 puntos de devolución de iva ###    
+
+Importe total: $ 132  
+Importe transacción: $ 122  
+Importe gravado: $ 100  
+Importe propina: $ 10
+
+|MDD|Valor|
+|-|-|
+|MDD5|000010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60000000002001234567A10000000122000000000100000000000132000001000020001V|
+
+#### Ejemplo para figura de Payment Facilitators
+
+Para una transacción realizada con tarjeta de débito que aplique ley 19.210 con devolución de 2 puntos de iva y con propina
+
+Importe total: $ 132  
+Importe gravado: $ 100  
+Importe transacción: $ 130  
+Importe devolución de IVA: $ 2     
+Importe propina: $ 10
+
+
+En este caso lo que varía con respecto a la figura de las pasarelas es el campo importe transacción.
+Se debe calcular de esta forma:
+importe transacción = imp transacción original – imp devolución + imp propina
+
+|MDD|Valor|
+|-|-|
+|MDD3|000000013200|
+|MDD4|000000010000|
+|MDD5|000010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60000000002001234567A10000000122000000000100000000000130000001000020001V|
 |MDD6|0123456789|
 |MDD7|01|
 |MDD8|411111|
