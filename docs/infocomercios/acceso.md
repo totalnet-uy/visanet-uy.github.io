@@ -9,7 +9,7 @@ nav_order: 1
 
 Visanet Uruguay pone a disposición de comercios e integradores [acceso.vnet.uy](https://acceso.vnet.uy), una nueva herramienta para compartir información adicional a la que es enviada en los documentos de liquidación y facturación.
 
-En esta etapa la herramienta permite el acceso a archivos procesables con los formatos ya existentes de modo de mantener compatibilidad con los sistemas actuales, pero se irán agregando funcionalidades y formatos a futuro.
+En esta etapa la herramienta permite el acceso a archivos procesables con los formatos ya existentes de modo de mantener compatibilidad con los sistemas actuales (ej. [ArchivoCupones](https://docs.vnet.uy/docs/infocomercios/formatos/archivocupones)), pero se irán agregando funcionalidades y formatos a futuro.
 
 ## Modalidades de acceso
 
