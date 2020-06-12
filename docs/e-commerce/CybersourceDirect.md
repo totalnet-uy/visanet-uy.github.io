@@ -111,6 +111,8 @@ Formato del campo *issuer_additionalData*:
 |90-101|12|* Número documento comercio origen (alfanumérico)|Mandatorio PF|
 |102-126|25|** Número de pedido/orden (alfanumérico)|Opcional|
 |127-138|12|* Código promoción  (alfanumérico)|Opcional PF|
+|139|1|Marca presencial ("N" o " "=ecommerce  "S"=presencial|Mandatorio|
+
 
 **NOTAS:**   
 
@@ -126,6 +128,7 @@ Los campos marcados con * solo aplican a la figura de Payment Facilitators y son
 
 - ** Número pedido/orden: Número que identifica el pedido/orden para el comercio. Este campo es opcional y aplica también para la figura de pasarelas.  
 - Código de promoción: Código informado por Visanet. Este campo también es opcional  
+- Marca presencial: Marca que indica si el tarjetahabiente estuvo presente en el comercio en la transacción.
 
 
 A su vez **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData (MDD)
