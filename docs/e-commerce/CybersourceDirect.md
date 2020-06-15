@@ -88,48 +88,37 @@ La información local ya sea de cuotas o de devolución de impuestos se envía e
 
 Formato del campo *issuer_additionalData*:
 
-|Posición|Largo|Descripción|Presencia|
-|----------|:-------------:|:------:|:------|
-|1-2|2|Plan|Mandatorio|
-|3|1|Meses diferidos|Mandatorio|
-|4-5|2|Cantidad de cuotas|Mandatorio|
-|6|1|Indicador envío de pista = 0|Mandatorio|
-|7-15|9|Cédula de identidad, padding 0 a la izquierda|Opcional|
-|16|1|INDI = Indicador de devolución de impuestos<br>0 - No aplica devolución<br>1 - Ley 17.934 (Restaurantes)<br>6 - Ley 19.210 (Inclusión Financiera)|Mandatorio|
-|17-28|12|Importe devolución de IVA (10 enteros 2 decimales)|Mandatorio|
-|29-35|7|Número de factura (7 dígitos)|Mandatorio|
-|36-37|2|Serie comprobante (alfanumérico)|Opcional|
-|38-49|12|Importe total facturado (10 enteros 2 decimales)|Mandatorio|
-|50-61|12|Importe gravado (10 enteros 2 decimales)|Mandatorio|
-|62-73|12|Importe transacción (10 enteros 2 decimales)|Mandatorio|
-|74-80|7|Importe propina (5 enteros 2 decimales)|Mandatorio|
-|81-84|4|Porcentaje beneficio (2 enteros 2 decimales)|Mandatorio|
-|85-86|2|Id integrador (alfanumérico)|Mandatorio|
-|87|1| Quién retiene beneficio leyes ( "V" = Visanet, "C" = Comercio )|Mandatorio|
-||||
-|88-89|2|* Tipo documento origen (“01”= C.I.  “02”=RUT)|Mandatorio PF|
-|90-101|12|* Número documento comercio origen (alfanumérico)|Mandatorio PF|
-|102-126|25|** Número de pedido/orden (alfanumérico)|Opcional|
-|127-138|12|* Código promoción  (alfanumérico)|Opcional PF|
-|139|1|Marca presencial ("N" o " "=ecommerce  "S"=presencial|Opcional|
+|Posición|Largo|Descripción|Presencia|Observaciones|
+|----------|:-------------:|:------:|:------|:-------------:|
+|1-2|2|Plan|Mandatorio||
+|3|1|Meses diferidos|Mandatorio||
+|4-5|2|Cantidad de cuotas|Mandatorio||
+|6|1|Indicador envío de pista = 0|Mandatorio||
+|7-15|9|Cédula de identidad, padding 0 a la izquierda|Opcional||
+|16|1|INDI = Indicador de devolución de impuestos<br>0 - No aplica devolución<br>1 - Ley 17.934 (Restaurantes)<br>6 - Ley 19.210 (Inclusión Financiera)|Mandatorio||
+|17-28|12|Importe devolución de IVA (10 enteros 2 decimales)|Mandatorio||
+|29-35|7|Número de factura (7 dígitos)|Mandatorio||
+|36-37|2|Serie comprobante (alfanumérico)|Opcional||
+|38-49|12|Importe total facturado (10 enteros 2 decimales)|Mandatorio||
+|50-61|12|Importe gravado (10 enteros 2 decimales)|Mandatorio||
+|62-73|12|Importe transacción (10 enteros 2 decimales)|Mandatorio||
+|74-80|7|Importe propina (5 enteros 2 decimales)|Mandatorio||
+|81-84|4|Porcentaje beneficio (2 enteros 2 decimales)|Mandatorio|Valor que se extrae de Api Lif|
+|85-86|2|Id integrador (alfanumérico)|Mandatorio|Identificador de integrador asignado por Visanet a la pasarela|
+|87|1| Quién retiene beneficio leyes ( "V" = Visanet, "C" = Comercio )|Mandatorio|"V" para las pasarelas,"C" para los Payment Facilitators|
+|||||
+|88-89|2|* Tipo documento origen (“01”= C.I.  “02”=RUT)|Mandatorio PF||
+|90-101|12|* Número documento comercio origen (alfanumérico)|Mandatorio PF||
+|102-126|25|Número de pedido/orden (alfanumérico)|Opcional|Número que identifica el pedido/orden para el comercio|
+|127-138|12|Marca transacción especial (alfanumérico)|Opcional|Se utiliza para marcar diferentes modalidades u operaciones vinculadas a la transacción, por ej código promoción. El contenido de este campo debe ser previamente coordinado con Visanet|
+|139|1|Marca presencial ("N"=No presencial "S"=presencial)|Opcional| Marca que indica si el tarjetahabiente estuvo presente en el comercio en la transacción|
 
 
 **NOTAS:**   
 
-Los campos cédula de identidad y serie comprobante son opcionales.
-Los otros campos son mandatorios (hasta el campo 87 inclusive).  
- - Porcentaje de beneficio: Valor que se extrae de Api Lif.  
- - Id integrador: Identificador de integrador asignado por Visanet a la pasarela.     
- - Quién retiene beneficio leyes:
-    - "V" para las pasarelas  
-    - "C" para los Payment Facilitators
-
 Los campos marcados con * solo aplican a la figura de Payment Facilitators y son mandatorios.
 
-- ** Número pedido/orden: Número que identifica el pedido/orden para el comercio. Este campo es opcional y aplica también para la figura de pasarelas.  
-- Código de promoción: Código informado por Visanet. Este campo también es opcional. 
-      Para los casos que la operación se haya realizado a través de pagolink, ese campo pasa a ser mandatorio y se debe enviar la leyenda "pagolink" (recostado a la izquierda y completar con blancos)
-- Marca presencial: Marca que indica si el tarjetahabiente estuvo presente en el comercio en la transacción.
+
 
 
 A su vez **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData (MDD)
@@ -145,7 +134,7 @@ A su vez **se debe enviar** junto a cada transacción como mínimo la siguiente 
 |MDD6|Mandatorio|Número de factura completo|
 |MDD7|Mandatorio|Identificador de comercio/integrador<br>segun informado por Visanet|
 |MDD8|Mandatorio|BIN|
-|MDD9|Opcional|Código de promoción<br>según informado por Visanet|
+|MDD9|Opcional|Marca transacción especial|
 
 
 #### Ejemplo para figura de pasarelas
