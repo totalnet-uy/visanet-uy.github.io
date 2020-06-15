@@ -109,7 +109,7 @@ Formato del campo *issuer_additionalData*:
 |||||
 |88-89|2|* Tipo documento origen (“01”= C.I.  “02”=RUT)|Mandatorio PF||
 |90-101|12|* Número documento comercio origen (alfanumérico)|Mandatorio PF||
-|102-126|25|** Número de pedido/orden (alfanumérico)|Opcional|Número que identifica el pedido/orden para el comercio. Aplica también para la figura de pasarelas|
+|102-126|25|Número de pedido/orden (alfanumérico)|Opcional|Número que identifica el pedido/orden para el comercio. Aplica también para la figura de pasarelas|
 |127-138|12|* Marca transacción especial (alfanumérico)|Opcional|Se utiliza para marcar diferentes modalidades u operaciones vinculadas a la transacción, por ej código promoción. El contenido de este campo debe ser previamente coordinado con Visanet|
 |139|1|Marca presencial ("N"=No presencial "S"=presencial)|Opcional| Marca que indica si el tarjetahabiente estuvo presente en el comercio en la transacción|
 
@@ -118,9 +118,7 @@ Formato del campo *issuer_additionalData*:
 
 Los campos marcados con * solo aplican a la figura de Payment Facilitators y son mandatorios.
 
-- ** Número pedido/orden: Número que identifica el pedido/orden para el comercio. Este campo es opcional y aplica también para la figura de pasarelas.  
-- Marca transacción especial: Campo opcional que se utiliza para marcar diferentes modalidades u operaciones vinculadas a la transacción, por ej código promoción. El contenido de este campo debe ser previamente coordinado con Visanet.
-- Marca presencial: Marca que indica si el tarjetahabiente estuvo presente en el comercio en la transacción.
+
 
 
 A su vez **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData (MDD)
