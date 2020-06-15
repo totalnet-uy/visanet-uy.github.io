@@ -89,7 +89,7 @@ La información local ya sea de cuotas o de devolución de impuestos se envía e
 Formato del campo *issuer_additionalData*:
 
 |Posición|Largo|Descripción|Presencia|Observaciones|
-|----------|:-------------:|:------:|:------|:-------------:|
+|----------|:-------------:|:------|:------|:-------------|
 |1-2|2|Plan|Mandatorio||
 |3|1|Meses diferidos|Mandatorio||
 |4-5|2|Cantidad de cuotas|Mandatorio||
@@ -107,18 +107,11 @@ Formato del campo *issuer_additionalData*:
 |85-86|2|Id integrador (alfanumérico)|Mandatorio|Identificador de integrador asignado por Visanet a la pasarela|
 |87|1| Quién retiene beneficio leyes ( "V" = Visanet, "C" = Comercio )|Mandatorio|"V" para las pasarelas,"C" para los Payment Facilitators|
 |||||
-|88-89|2|* Tipo documento origen (“01”= C.I.  “02”=RUT)|Mandatorio PF||
-|90-101|12|* Número documento comercio origen (alfanumérico)|Mandatorio PF||
+|88-89|2|Tipo documento origen (“01”= C.I.  “02”=RUT)|Mandatorio PF| Este campo solo aplica a la figura de Payment Facilitator|
+|90-101|12|Número documento comercio origen (alfanumérico)|Mandatorio PF|Este campo solo aplica a la figura de Payment Facilitator|
 |102-126|25|Número de pedido/orden (alfanumérico)|Opcional|Número que identifica el pedido/orden para el comercio|
-|127-138|12|Marca transacción especial (alfanumérico)|Opcional|Se utiliza para marcar diferentes modalidades u operaciones vinculadas a la transacción, por ej código promoción. El contenido de este campo debe ser previamente coordinado con Visanet|
+|127-138|12|Marca transacción especial (alfanumérico)|Opcional|Se utiliza para marcar diferentes modalidades u operaciones vinculadas a la transacción. El contenido de este campo debe ser previamente coordinado con Visanet<br> por ejemplo:  <br>- Código de promocion<br>- PAGOLINK|
 |139|1|Marca presencial ("N"=No presencial "S"=presencial)|Opcional| Marca que indica si el tarjetahabiente estuvo presente en el comercio en la transacción|
-
-
-**NOTAS:**   
-
-Los campos marcados con * solo aplican a la figura de Payment Facilitators y son mandatorios.
-
-
 
 
 A su vez **se debe enviar** junto a cada transacción como mínimo la siguiente información como merchantDefinedData (MDD)
