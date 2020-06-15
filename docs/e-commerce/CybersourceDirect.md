@@ -81,6 +81,9 @@ Visanet Uruguay implemento una API ([API LIF](https://api-lif.vnet.uy/Help) ) pa
 
 ![flujo API LIF ](/assets/img/API_LIF_flow.svg)
 
+### Soft Descriptor
+Los Payment Facilitators deben identificar el nombre del comercio de origen.
+
 ### Datos adicionales a la transacción
 Referencia: <http://apps.cybersource.com/library/documentation/dev_guides/CC_Svcs_SO_API/Credit_Cards_SO_API.pdf>
 
@@ -110,7 +113,7 @@ Formato del campo *issuer_additionalData*:
 |88-89|2|Tipo documento origen (“01”= C.I.  “02”=RUT)|Mandatorio PF| Este campo solo aplica a la figura de Payment Facilitator|
 |90-101|12|Número documento comercio origen (alfanumérico)|Mandatorio PF|Este campo solo aplica a la figura de Payment Facilitator|
 |102-126|25|Número de pedido/orden (alfanumérico)|Opcional|Número que identifica el pedido/orden para el comercio|
-|127-138|12|Marca transacción especial (alfanumérico)|Opcional|Se utiliza para marcar diferentes modalidades u operaciones vinculadas a la transacción. El contenido de este campo debe ser previamente coordinado con Visanet<br> por ejemplo:  <br>- Código de promocion<br>- PAGOLINK|
+|127-138|12|Marca transacción especial (alfanumérico)|Opcional|Se utiliza para marcar diferentes modalidades u operaciones vinculadas a la transacción. El contenido de este campo debe ser previamente coordinado con Visanet<br> Por ejemplo:  <br>- Código de Promocion<br>- Link de pago: el contenido debe ser "PAGOLINK&nbsp;&nbsp;&nbsp;&nbsp;"|
 |139|1|Marca presencial ("N"=No presencial "S"=presencial)|Opcional| Marca que indica si el tarjetahabiente estuvo presente en el comercio en la transacción|
 
 
