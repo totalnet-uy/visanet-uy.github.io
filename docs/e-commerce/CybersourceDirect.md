@@ -110,7 +110,7 @@ Formato del campo *issuer_additionalData*:
 |85-86|2|Id integrador (alfanumérico)|Mandatorio|Identificador de integrador asignado por Visanet a la pasarela|
 |87|1| Quién retiene beneficio leyes ( "V" = Visanet, "C" = Comercio )|Mandatorio|"V" para las pasarelas,"C" para los Payment Facilitators|
 |||||
-|88-89|2|Tipo documento origen (“01”= C.I.  “02”=RUT)|Mandatorio PF| Este campo solo aplica a la figura de Payment Facilitator|
+|88-89|2|Tipo documento origen (“02”=RUT  “03”=C.I.)|Mandatorio PF| Este campo solo aplica a la figura de Payment Facilitator|
 |90-101|12|Número documento comercio origen (alfanumérico)|Mandatorio PF|Este campo solo aplica a la figura de Payment Facilitator|
 |102-126|25|Número de pedido/orden (alfanumérico)|Opcional|Número que identifica el pedido/orden para el comercio|
 |127-138|12|Marca transacción especial (alfanumérico)|Opcional|Se utiliza para marcar diferentes modalidades u operaciones vinculadas a la transacción. El contenido de este campo debe ser previamente coordinado con Visanet<br> Por ejemplo:  <br>- Código de Promocion<br>- Link de pago: el contenido debe ser "PAGOLINK&nbsp;&nbsp;&nbsp;&nbsp;"|
@@ -160,27 +160,3 @@ Importe propina: $ 10
 |MDD|Valor|
 |-|-|
 |MDD5|000010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60000000002001234567A10000000122000000000100000000000132000001000020001V|
-
-#### Ejemplo para figura de Payment Facilitators
-
-Para una transacción realizada con tarjeta de débito que aplique ley 19.210 con devolución de 2 puntos de iva y con propina
-
-Importe total: $ 132  
-Importe gravado: $ 100  
-Importe transacción: $ 130  
-Importe devolución de IVA: $ 2     
-Importe propina: $ 10
-
-
-En este caso lo que varía con respecto a la figura de las pasarelas es el campo importe transacción.
-Se debe calcular de esta forma:
-importe transacción = imp transacción original – imp devolución + imp propina
-
-|MDD|Valor|
-|-|-|
-|MDD3|000000013200|
-|MDD4|000000010000|
-|MDD5|000010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;60000000002001234567A10000000122000000000100000000000130000001000020001V|
-|MDD6|0123456789|
-|MDD7|01|
-|MDD8|411111|
